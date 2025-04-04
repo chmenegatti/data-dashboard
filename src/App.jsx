@@ -46,7 +46,7 @@ const App = () => {
       <div className="container">
         {/* Cabeçalho */}
         <div className="header">
-          <h1>Data Dashboard</h1>
+          <h1>Virtuais Servers Órfãos - Evolução - Dashboard</h1>
           <button
             onClick={() => setDarkMode(!darkMode)}
             className="theme-toggle"
