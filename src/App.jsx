@@ -22,14 +22,14 @@ const App = () => {
     TESP03: true,
     TESP05: true,
     TESP06: true,
-    TECE01: true,
+    TECE: true,
   });
   const [colors, setColors] = useState({
     TESP02: '#8884d8',
     TESP03: '#82ca9d',
     TESP05: '#ff7300',
     TESP06: '#00c49f',
-    TECE01: '#ffbb28',
+    TECE: '#ffbb28',
   });
   const [darkMode, setDarkMode] = useState(false);
 
@@ -65,28 +65,28 @@ const App = () => {
     <ThemeProvider theme={getTheme(darkMode)}>
       <Box
         sx={{
-          maxHeight: '99vh',
+          minHeight: '100vh',
           bgcolor: 'background.default',
           m: 0,
           p: 0,
-          width: '99vw',
-          overflow: 'hidden', // Remove barras de rolagem globais
+          width: '100vw',
+          overflow: 'hidden',
         }}
       >
         <Container
           maxWidth="lg"
           sx={{
             py: 4,
-            height: '98vh', // Garante que o conteúdo preencha a tela
+            height: '100vh',
             display: 'flex',
             flexDirection: 'column',
-            overflow: 'hidden', // Evita overflow no container
+            overflow: 'hidden',
           }}
         >
           {/* Cabeçalho */}
           <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', mb: 4 }}>
             <Typography variant="h1" color="text.primary">
-              Virtual Server Órfãos - Evolução - Dashboard
+              Virtual Servers Órfãos - Evolução - Dashboard
             </Typography>
             <Button
               variant="contained"
@@ -101,10 +101,9 @@ const App = () => {
           <Stack
             direction={{ xs: 'column', md: 'row' }}
             spacing={3}
-            sx={{ mb: 4, flexShrink: 0 }} // Impede que os controles sejam espremidos
+            sx={{ mb: 4, flexShrink: 0 }}
           >
             <Paper sx={{ p: 3, flex: 1, overflow: 'auto' }}>
-              
               <Typography variant="h2" color="text.primary" gutterBottom>
                 Mostrar/Ocultar Linhas
               </Typography>
@@ -123,10 +122,10 @@ const App = () => {
               ))}
             </Paper>
             <Paper sx={{ p: 3, flex: 1, overflow: 'hidden' }}>
-              <Typography variant="h2" color="text.primary" gutterBottom>
+              <Typography variant="h2" color="text.primary" gutterBottom textAlign={'center'}>
                 Alterar Cores
               </Typography>
-              <Grid container spacing={1.5}>
+              <Grid container spacing={1.5} justifyContent="space-between">
                 {Object.keys(colors).map((key) => (
                   <Grid item xs={6} key={key}>
                     <Box
@@ -165,13 +164,25 @@ const App = () => {
             </Paper>
           </Stack>
 
-          {/* Gráfico */}
-          <Paper sx={{ p: 3, flexGrow: 1, overflow: 'hidden' }}>
+          {/* Gráfico e Legenda */}
+          <Paper sx={{ p: 3, flexGrow: 1, overflow: 'hidden', display: 'flex', flexDirection: 'column' }}>
             {data.length > 0 ? (
-              <LineChartComponent data={data} visibleLines={visibleLines} colors={colors} />
+              <Box sx={{ flexGrow: 1 }}>
+                <LineChartComponent data={data} visibleLines={visibleLines} colors={colors} />
+              </Box>
             ) : (
               <Typography color="text.secondary">Carregando dados...</Typography>
             )}
+            <Box sx={{ mt: 2, display: 'flex', gap: 2, justifyContent: 'center' }}>
+              <Typography variant="body2" sx={{ display: 'flex', alignItems: 'center', gap: 1 }}>
+                <span style={{ width: '12px', height: '12px', backgroundColor: '#00ff00', display: 'inline-block', borderRadius: '2px' }}></span>
+                04/02/2025 - Correção Gateway
+              </Typography>
+              <Typography variant="body2" sx={{ display: 'flex', alignItems: 'center', gap: 1 }}>
+                <span style={{ width: '12px', height: '12px', backgroundColor: '#ff0000', display: 'inline-block', borderRadius: '2px' }}></span>
+                11/02/2025 - RDM Sanitização Redes
+              </Typography>
+            </Box>
           </Paper>
         </Container>
       </Box>
