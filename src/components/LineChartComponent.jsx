@@ -45,8 +45,8 @@ const LineChartComponent = ({ data, visibleLines, colors }) => {
         {visibleLines.TESP06 && (
           <Line type="monotone" dataKey="TESP06" stroke={colors.TESP06} name="TESP06" />
         )}
-        {visibleLines.TECE && (
-          <Line type="monotone" dataKey="TECE" stroke={colors.TECE} name="TECE" />
+        {visibleLines.TECE01 && (
+          <Line type="monotone" dataKey="TECE01" stroke={colors.TECE01} name="TECE01" />
         )}
         {/* Linha Verde - 04/02/2025 */}
         <ReferenceLine

@@ -22,14 +22,14 @@ const App = () => {
     TESP03: true,
     TESP05: true,
     TESP06: true,
-    TECE: true,
+    TECE01: true,
   });
   const [colors, setColors] = useState({
     TESP02: '#8884d8',
     TESP03: '#82ca9d',
     TESP05: '#ff7300',
     TESP06: '#00c49f',
-    TECE: '#ffbb28',
+    TECE01: '#ffbb28',
   });
   const [darkMode, setDarkMode] = useState(false);
 
